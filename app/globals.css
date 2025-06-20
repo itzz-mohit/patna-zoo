@@ -1,0 +1,594 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: "Bebas Neue", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-zoo-teal-700 text-white;
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    line-height: 1.6;
+  }
+
+  /* Responsive Typography Scale */
+  h1 {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+    line-height: 1.4;
+  }
+
+  h5 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.4;
+  }
+
+  h6 {
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    line-height: 1.4;
+  }
+
+  /* Optimized paragraph sizing for mobile-first */
+  p {
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    body {
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    p {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 0.875rem;
+    }
+
+    /* Slightly larger for important content */
+    .lead-text {
+      font-size: 0.875rem;
+      line-height: 1.65;
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1025px) {
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+@layer components {
+  .zoo-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1400px;
+  }
+
+  .zoo-heading {
+    @apply font-heading tracking-wide uppercase;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .zoo-heading-large {
+    @apply font-heading tracking-wide uppercase;
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1.05;
+  }
+
+  .zoo-heading-small {
+    @apply font-heading tracking-wide uppercase;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    line-height: 1.2;
+  }
+
+  /* Mobile-optimized text classes */
+  .zoo-text-large {
+    font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .zoo-text-small {
+    font-size: clamp(0.7rem, 1.8vw, 0.875rem);
+    line-height: 1.5;
+  }
+
+  .zoo-text-body {
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .zoo-button-primary {
+    @apply bg-zoo-yellow-600 hover:bg-zoo-yellow-500 text-zoo-teal-900 font-bold uppercase tracking-wide rounded-full transition-all duration-300 inline-block text-center;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+  }
+
+  .zoo-button-secondary {
+    @apply border-2 border-white hover:bg-white text-white hover:text-zoo-teal-700 font-bold uppercase tracking-wide rounded-full transition-all duration-300 inline-block text-center;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+  }
+
+  .zoo-card {
+    @apply relative overflow-hidden rounded-lg;
+  }
+
+  .zoo-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-zoo-teal-900/90 to-transparent flex flex-col justify-end;
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .zoo-nav-link {
+    @apply text-white hover:text-zoo-yellow-600 transition-colors duration-300 font-medium;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  /* Responsive spacing utilities */
+  .zoo-section-padding {
+    padding-top: clamp(3rem, 8vw, 4rem);
+    padding-bottom: clamp(3rem, 8vw, 4rem);
+  }
+
+  .zoo-section-margin {
+    margin-top: clamp(2rem, 6vw, 3rem);
+    margin-bottom: clamp(2rem, 6vw, 3rem);
+  }
+
+  /* Mobile-first responsive text classes with smaller mobile sizes */
+  .responsive-text-xs {
+    font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+    line-height: 1.4;
+  }
+
+  .responsive-text-sm {
+    font-size: clamp(0.7rem, 1.8vw, 0.875rem);
+    line-height: 1.5;
+  }
+
+  .responsive-text-base {
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    line-height: 1.65;
+  }
+
+  .responsive-text-lg {
+    font-size: clamp(0.9rem, 2.5vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .responsive-text-xl {
+    font-size: clamp(1rem, 2.8vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  .responsive-text-2xl {
+    font-size: clamp(1.125rem, 3.2vw, 1.5rem);
+    line-height: 1.4;
+  }
+
+  .responsive-text-3xl {
+    font-size: clamp(1.25rem, 3.5vw, 1.875rem);
+    line-height: 1.3;
+  }
+
+  .responsive-text-4xl {
+    font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .responsive-text-5xl {
+    font-size: clamp(1.75rem, 5.5vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .responsive-text-6xl {
+    font-size: clamp(2rem, 6.5vw, 3.75rem);
+    line-height: 1.05;
+  }
+
+  /* Content-specific text classes */
+  .content-text {
+    font-size: clamp(0.8rem, 2.2vw, 1rem);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .content-text-large {
+    font-size: clamp(0.875rem, 2.4vw, 1.125rem);
+    line-height: 1.65;
+    margin-bottom: 1.125rem;
+  }
+
+  .content-text-small {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    line-height: 1.6;
+    margin-bottom: 0.875rem;
+  }
+}
+
+/* Enhanced Animations with Fallback Visibility */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fallback to ensure all elements become visible */
+.animate-on-scroll {
+  animation: ensure-visibility 0s forwards 2s;
+}
+
+@keyframes ensure-visibility {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation delays */
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+.stagger-5 {
+  transition-delay: 0.5s;
+}
+
+/* Fade-in animation for immediate visibility */
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Carousel animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee.paused {
+  animation-play-state: paused;
+}
+
+/* Enhanced mobile readability with smaller text */
+@media (max-width: 640px) {
+  .zoo-container {
+    @apply px-4;
+  }
+
+  /* Improved mobile spacing */
+  .zoo-section-padding {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Better mobile line heights for smaller text */
+  p,
+  .responsive-text-base,
+  .content-text {
+    line-height: 1.7;
+  }
+
+  /* Mobile-optimized headings */
+  .zoo-heading-large {
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .zoo-heading {
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Mobile button optimization */
+  .zoo-button-primary,
+  .zoo-button-secondary {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.75rem;
+    min-height: 44px; /* Touch target size */
+  }
+
+  /* Specific mobile paragraph adjustments */
+  .hero-text {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .card-text {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .description-text {
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+}
+
+/* Small mobile devices (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  p,
+  .content-text {
+    font-size: 0.75rem;
+    line-height: 1.75;
+  }
+
+  .responsive-text-base {
+    font-size: 0.75rem;
+  }
+
+  .zoo-text-body {
+    font-size: 0.75rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .zoo-container {
+    @apply px-6;
+  }
+
+  .zoo-section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  p,
+  .content-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* High-DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Enhanced Navbar Dropdown Animations */
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes dropdownFadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px) scale(0.96);
+  }
+}
+
+/* Smooth hover transitions for dropdown items */
+.dropdown-item-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-item-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.dropdown-item-hover:hover::before {
+  left: 100%;
+}
+
+/* Mobile menu slide animations */
+@keyframes mobileMenuSlideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobileMenuSlideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Submenu expand animation for mobile */
+@keyframes mobileSubmenuExpand {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+.mobile-submenu-enter {
+  animation: mobileSubmenuExpand 0.3s ease-out forwards;
+}
+
+/* Improved focus states for accessibility */
+.nav-item:focus-visible {
+  outline: 2px solid #f0f346;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Subtle backdrop blur effect for dropdowns */
+.dropdown-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Smooth scale animation for buttons */
+.button-scale:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-out;
+}
+
+.button-scale:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease-out;
+}
+
+/* Enhanced dropdown stability */
+.dropdown-stable {
+  /* Prevent layout shifts */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Smooth transitions for all browsers */
+@supports (backdrop-filter: blur(8px)) {
+  .dropdown-backdrop {
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (backdrop-filter: blur(8px)) {
+  .dropdown-backdrop {
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .dropdown-item-hover:hover::before {
+    display: none;
+  }
+
+  /* Increase touch targets on mobile */
+  .nav-item {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .dropdown-backdrop {
+    background-color: white;
+    border: 2px solid black;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+    animation: none;
+  }
+
+  .dropdown-stable {
+    transition: opacity 0.1s ease-out;
+    transform: none !important;
+  }
+
+  .dropdown-item-hover::before {
+    display: none;
+  }
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
